@@ -10,6 +10,11 @@ repositories {
     mavenCentral()
 }
 
+task execute(type:JavaExec) {
+    main = "TestingMain"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
