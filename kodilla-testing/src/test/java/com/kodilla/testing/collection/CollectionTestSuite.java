@@ -4,7 +4,7 @@ import org.junit.*;
 import java.util.*;
 
 public class CollectionTestSuite {
-    static final Random random = new Random();
+    private static final Random random = new Random();
 
     @Before
     public void before(){
@@ -48,34 +48,47 @@ public class CollectionTestSuite {
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         //When
         result = oddNumbersExterminator.exterminate(numbers);
-        System.out.println("Test, when List<Integer> is empty ...");
+        System.out.println("Test empty list ...");
         //Then
-        Assert.assertNull(result);
+        Assert.assertEquals(0, result.size());
     }
 
     @Test
     public void testOddNumbersExterminatorNormalList() {
-        ArrayList<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers;
         List<Integer> result;
-        boolean oddNumberFound = false;
+        boolean oddNumberFound;
         int maxNumbers = 500;
 
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        for (int i = 0; i < maxNumbers; i++) {
-            numbers.add(random.nextInt(1000));
-        }
+        numbers = fillNumbersCollection(maxNumbers);
+
         //When
         result = oddNumbersExterminator.exterminate(numbers);
         System.out.format("Test, when List<Integer> is filled with %d random numbers ...\n", maxNumbers);
+
         //Then
-        for (Integer number : result) {
-            if (number % 2 != 0) {
-                oddNumberFound = true;
-                break;
-            }
-        }
+        oddNumberFound = checkForOddElements(result);
         System.out.format("Found %d even numbers and %d odd numbers from %d entered ...\n", result.size(), maxNumbers - result.size(), maxNumbers);
         Assert.assertFalse(oddNumberFound);
+    }
+
+    private List<Integer> fillNumbersCollection(int maxNumbers) {
+        List<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < maxNumbers; i++) {
+            result.add(random.nextInt(1000));
+        }
+        return result;
+    }
+
+    private boolean checkForOddElements(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number % 2 != 0) {
+                return true;
+            }
+        }
+        return false;
     }
 }

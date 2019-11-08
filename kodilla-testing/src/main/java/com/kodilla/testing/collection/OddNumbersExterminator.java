@@ -7,7 +7,7 @@ public class OddNumbersExterminator {
     OddNumbersExterminator() {
     }
 
-    List<Integer> exterminate(ArrayList<Integer> numbers) {
+    List<Integer> exterminate(List<Integer> numbers) {
         List<Integer> evenNumbers = new ArrayList<>();
 
         if (numbers == null) {
@@ -20,8 +20,8 @@ public class OddNumbersExterminator {
                     evenNumbers.add(number);
                 }
             }
-        } else {
-            return null;
+        } else if (numbers.size() == 0) {
+            return new ArrayList<>();
         }
 
         return evenNumbers;
