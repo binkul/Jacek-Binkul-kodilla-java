@@ -1,6 +1,5 @@
 package com.kodilla.testing.shape;
 
-import javafx.beans.binding.When;
 import org.junit.*;
 
 public class ShapeCollectorTestSuite {
@@ -108,7 +107,6 @@ public class ShapeCollectorTestSuite {
     @Test
     public void testField() {
         //Given
-        ShapeCollector shapeCollector = new ShapeCollector();
         Shape triangle = new Triangle("Triangle", 10, 10);
         Shape square = new Square("Square", 10);
         Shape circle = new Circle("Circle", 5);

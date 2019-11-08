@@ -3,8 +3,8 @@ package com.kodilla.testing.shape;
 import java.util.Objects;
 
 public class Square implements Shape {
-    String name;
-    double sideLength;
+    private String name;
+    private double sideLength;
 
     public Square(String name, double sideLength) {
         this.name = name;
@@ -24,7 +24,8 @@ public class Square implements Shape {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || !(o instanceof Square)) return false;
+        if (o == null) return false;
+        if (!(o instanceof Square)) return false;
         Square square = (Square) o;
         return Double.compare(square.sideLength, sideLength) == 0 &&
                 name.equals(square.name);

@@ -3,7 +3,7 @@ package com.kodilla.testing.shape;
 import java.util.*;
 
 public class ShapeCollector {
-    List<Shape> shapeCollector = new ArrayList<>();
+    private List<Shape> shapes = new ArrayList<>();
 
     public void addFigure(Shape shape) {
 

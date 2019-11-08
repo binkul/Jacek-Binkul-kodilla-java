@@ -3,8 +3,8 @@ package com.kodilla.testing.shape;
 import java.util.Objects;
 
 public class Circle implements Shape {
-    String name;
-    double radius;
+    private String name;
+    private double radius;
 
     public Circle(String name, double radius) {
         this.name = name;
@@ -24,7 +24,8 @@ public class Circle implements Shape {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || !(o instanceof Circle)) return false;
+        if (o == null) return false;
+        if (!(o instanceof Circle)) return false;
         Circle circle = (Circle) o;
         return Double.compare(circle.radius, radius) == 0 &&
                 name.equals(circle.name);
