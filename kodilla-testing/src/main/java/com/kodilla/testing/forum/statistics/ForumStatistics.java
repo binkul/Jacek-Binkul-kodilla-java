@@ -1,43 +1,33 @@
 package com.kodilla.testing.forum.statistics;
 
 public class ForumStatistics {
-    private int userCount;
-    private int postCount;
-    private int commentCount;
-    private double avrPostOnUser;
-    private double avrCommentOnUser;
-    private double avrCommentOnPost;
+    private Statistics statistics;
 
-    public void calculateAdvStatistics(Statistics statistics) {
-        this.userCount = statistics.usersNames().size();
-        this.postCount = statistics.postsCount();
-        this.commentCount = statistics.commentsCount();
-        this.avrPostOnUser = this.userCount != 0 ? (double)this.postCount / this.userCount : 0;
-        this.avrCommentOnUser = this.userCount != 0 ? (double)this.commentCount / this.userCount : 0;
-        this.avrCommentOnPost = this.postCount != 0 ? (double)this.commentCount / this.postCount : 0;
+    public ForumStatistics(Statistics statistics) {
+        this.statistics = statistics;
     }
 
     public int getUserCount() {
-        return userCount;
+        return statistics.usersNames().size();
     }
 
     public int getPostCount() {
-        return postCount;
+        return statistics.postsCount();
     }
 
     public int getCommentCount() {
-        return commentCount;
+        return statistics.commentsCount();
     }
 
     public double getAvrPostOnUser() {
-        return avrPostOnUser;
+        return getUserCount() != 0 ? (double)getPostCount() / getUserCount() : 0;
     }
 
     public double getAvrCommentOnUser() {
-        return avrCommentOnUser;
+        return getUserCount() != 0 ? (double)getCommentCount() / getUserCount() : 0;
     }
 
     public double getAvrCommentOnPost() {
-        return avrCommentOnPost;
+        return getPostCount() != 0 ? (double)getCommentCount() / getPostCount() : 0;
     }
 }

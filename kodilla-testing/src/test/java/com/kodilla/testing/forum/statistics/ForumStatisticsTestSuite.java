@@ -33,8 +33,7 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.usersNames()).thenReturn(userNamesMock);
         when(statisticsMock.postsCount()).thenReturn(postsCountMock);
         when(statisticsMock.commentsCount()).thenReturn(commentsCountMock);
-        ForumStatistics forumStatistics = new ForumStatistics();
-        forumStatistics.calculateAdvStatistics(statisticsMock);
+        ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
         System.out.println("Test for number of posts = 0");
 
         //When
@@ -65,8 +64,7 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.usersNames()).thenReturn(userNamesMock);
         when(statisticsMock.postsCount()).thenReturn(postsCountMock);
         when(statisticsMock.commentsCount()).thenReturn(commentsCountMock);
-        ForumStatistics forumStatistics = new ForumStatistics();
-        forumStatistics.calculateAdvStatistics(statisticsMock);
+        ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
         System.out.println("Test for number of posts = 1000");
 
         //When
@@ -97,8 +95,7 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.usersNames()).thenReturn(userNamesMock);
         when(statisticsMock.postsCount()).thenReturn(postsCountMock);
         when(statisticsMock.commentsCount()).thenReturn(commentsCountMock);
-        ForumStatistics forumStatistics = new ForumStatistics();
-        forumStatistics.calculateAdvStatistics(statisticsMock);
+        ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
         System.out.println("Test for number of comments = 0");
 
         //When
@@ -129,8 +126,7 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.usersNames()).thenReturn(userNamesMock);
         when(statisticsMock.postsCount()).thenReturn(postsCountMock);
         when(statisticsMock.commentsCount()).thenReturn(commentsCountMock);
-        ForumStatistics forumStatistics = new ForumStatistics();
-        forumStatistics.calculateAdvStatistics(statisticsMock);
+        ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
         System.out.println("Test for number of comments < posts");
 
         //When
@@ -161,8 +157,7 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.usersNames()).thenReturn(userNamesMock);
         when(statisticsMock.postsCount()).thenReturn(postsCountMock);
         when(statisticsMock.commentsCount()).thenReturn(commentsCountMock);
-        ForumStatistics forumStatistics = new ForumStatistics();
-        forumStatistics.calculateAdvStatistics(statisticsMock);
+        ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
         System.out.println("Test for number of comments > posts");
 
         //When
@@ -193,8 +188,7 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.usersNames()).thenReturn(userNamesMock);
         when(statisticsMock.postsCount()).thenReturn(postsCountMock);
         when(statisticsMock.commentsCount()).thenReturn(commentsCountMock);
-        ForumStatistics forumStatistics = new ForumStatistics();
-        forumStatistics.calculateAdvStatistics(statisticsMock);
+        ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
         System.out.println("Test for number of users = 0");
 
         //When
@@ -225,8 +219,7 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.usersNames()).thenReturn(userNamesMock);
         when(statisticsMock.postsCount()).thenReturn(postsCountMock);
         when(statisticsMock.commentsCount()).thenReturn(commentsCountMock);
-        ForumStatistics forumStatistics = new ForumStatistics();
-        forumStatistics.calculateAdvStatistics(statisticsMock);
+        ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
         System.out.println("Test for number of users = 100");
 
         //When
