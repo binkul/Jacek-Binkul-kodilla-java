@@ -3,7 +3,7 @@ package com.kodilla.testing.shape;
 import org.junit.*;
 
 public class ShapeCollectorTestSuite {
-    private static int testCounter = 0;
+    private static int testCounter = 1;
 
     @BeforeClass
     public static void beforeAllTests() {
@@ -15,12 +15,6 @@ public class ShapeCollectorTestSuite {
         System.out.println("All tests are finished.");
     }
 
-    @Before
-    public void beforeEveryTest() {
-        testCounter++;
-        System.out.println("Preparing to execute test #" + testCounter);
-    }
-
     @Test
     public void testAddNullShape() {
         //Given
@@ -28,6 +22,7 @@ public class ShapeCollectorTestSuite {
 
         //When
         shapeCollector.addFigure(null);
+        System.out.format("Test #%d: add null shape ...\n", testCounter++);
 
         //Then
         Assert.assertEquals(0, shapeCollector.getSize());
@@ -42,6 +37,7 @@ public class ShapeCollectorTestSuite {
 
         //When
         shapeCollector.addFigure(triangle);
+        System.out.format("Test #%d: add shape ...\n", testCounter++);
 
         //Then
         Assert.assertEquals(1, shapeCollector.getSize());
@@ -55,6 +51,7 @@ public class ShapeCollectorTestSuite {
 
         //When
         boolean result = shapeCollector.removeFigure(triangle);
+        System.out.format("Test #%d: remove not existing shape ...\n", testCounter++);
 
         //Then
         Assert.assertFalse(result);
@@ -69,6 +66,7 @@ public class ShapeCollectorTestSuite {
 
         //When
         boolean result = shapeCollector.removeFigure(triangle);
+        System.out.format("Test #%d: remove shape ...\n", testCounter++);
 
         //Then
         Assert.assertTrue(result);
@@ -84,6 +82,7 @@ public class ShapeCollectorTestSuite {
 
         //When
         Shape result = shapeCollector.getFigure(0);
+        System.out.format("Test #%d: get shape ...\n", testCounter++);
 
         //Then
         Assert.assertEquals(triangle, result);
@@ -94,14 +93,15 @@ public class ShapeCollectorTestSuite {
         //Given
         String name = "Triangle";
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape triangle = new Triangle(name, 10, 10);
+        Shape triangle = new Triangle(name, 1.25, 1);
         shapeCollector.addFigure(triangle);
 
         //When
         String result = shapeCollector.showFigures();
+        System.out.format("Test #%d: show all shapes from collection ...\n", testCounter++);
 
         //Then
-        Assert.assertEquals("Triangle, field = 50,00\n", result);
+        Assert.assertEquals("Triangle, field = 0,62\n", result);
     }
 
     @Test
@@ -115,11 +115,11 @@ public class ShapeCollectorTestSuite {
         double triangleField = triangle.getField();
         double squareField = square.getField();
         double circleField = circle.getField();
+        System.out.format("Test #%d: fields of shapes calculation ...\n", testCounter++);
 
         //Then
         Assert.assertEquals(50, triangleField, 0);
         Assert.assertEquals(100, squareField, 0);
         Assert.assertEquals(78.5, circleField, 0);
     }
-
 }
