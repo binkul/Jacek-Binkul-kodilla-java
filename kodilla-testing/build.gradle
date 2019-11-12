@@ -2,17 +2,14 @@ plugins {
     id 'java'
 }
 
+apply plugin: 'java'
+group 'com.kodilla'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
-}
-
-task execute(type:JavaExec) {
-    main = "TestingMain"
-    classpath = sourceSets.main.runtimeClasspath
 }
 
 dependencies {
