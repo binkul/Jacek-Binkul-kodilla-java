@@ -19,7 +19,7 @@ public class Circle implements Shape {
 
     @Override
     public double getField() {
-        return 3.14 * radius * radius;
+        return Math.PI * radius * radius;
     }
 
     @Override
