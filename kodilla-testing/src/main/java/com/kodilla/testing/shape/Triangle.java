@@ -1,5 +1,6 @@
 package com.kodilla.testing.shape;
 
+import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class Triangle implements Shape {
@@ -37,5 +38,11 @@ public class Triangle implements Shape {
     @Override
     public int hashCode() {
         return Objects.hash(name, baseLength, height);
+    }
+
+    @Override
+    public String toString() {
+        DecimalFormat df = new DecimalFormat("0.00");
+        return this.name + ", field = " + df.format(getField());
     }
 }

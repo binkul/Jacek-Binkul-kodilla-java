@@ -1,5 +1,6 @@
 package com.kodilla.testing.shape;
 
+import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class Circle implements Shape {
@@ -34,5 +35,11 @@ public class Circle implements Shape {
     @Override
     public int hashCode() {
         return Objects.hash(name, radius);
+    }
+
+    @Override
+    public String toString() {
+        DecimalFormat df = new DecimalFormat("0.00");
+        return this.name + ", field = " + df.format(getField());
     }
 }
