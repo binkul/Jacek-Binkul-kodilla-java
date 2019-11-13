@@ -1,15 +1,35 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.beautifier.PoemDecorator;
-import com.kodilla.stream.iterate.NumbersGenerator;
-import com.kodilla.stream.lambda.ExpressionExecutor;
-import com.kodilla.stream.lambda.Processor;
-import com.kodilla.stream.reference.FunctionalCalculator;
+import com.kodilla.stream.book.Book;
+import com.kodilla.stream.book.BookDirectory;
+import com.kodilla.stream.pearson.People;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
+        People.getList().stream()
+                .map(s -> s.toUpperCase())
+                .filter(s -> s.length() > 11)
+                .map(s -> s.substring(0, s.indexOf(" ") + 2) + ".")
+                .filter(s -> s.charAt(0) == 'M')
+                .forEach(s -> System.out.println(s));
 
+        System.out.println();
+
+        BookDirectory theBookDirectory = new BookDirectory();
+        List<Book> theResultListOfBooks = theBookDirectory.getList().stream()
+                .filter(book -> book.getYearOfPublication() > 2005)
+                .collect(Collectors.toList());
+
+        System.out.println("# elements: " + theResultListOfBooks.size());
+        theResultListOfBooks.stream()
+                .forEach((s) -> System.out.println(s));
+        
+
+
+        /*
         PoemBeautifier poemBeautifier = new PoemBeautifier();
         poemBeautifier.beautify("Jacek Binkul", text -> "### " + text + " ###");
         poemBeautifier.beautify("Lato było przedziwne tego roku", text -> text.replaceAll(" ", "_"));
@@ -29,5 +49,6 @@ public class StreamMain {
 
         System.out.println("Using Stream to generate even numbers from 1 to 20");
         NumbersGenerator.generateEven(20);
+*/
     }
 }
