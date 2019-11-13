@@ -93,7 +93,7 @@ public class ShapeCollectorTestSuite {
         //Given
         String name = "Triangle";
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape triangle = new Triangle(name, 1.25, 1);
+        Shape triangle = new Triangle(name, 1.25, 1.0);
         shapeCollector.addFigure(triangle);
 
         //When
@@ -101,7 +101,7 @@ public class ShapeCollectorTestSuite {
         System.out.format("Test #%d: show all shapes from collection ...\n", testCounter++);
 
         //Then
-        Assert.assertEquals("Triangle, field = 0,62\n", result);
+        Assert.assertEquals("Triangle(a: 1.25, h: 1.0)\n", result);
     }
 
     @Test
@@ -120,6 +120,6 @@ public class ShapeCollectorTestSuite {
         //Then
         Assert.assertEquals(50, triangleField, 0);
         Assert.assertEquals(100, squareField, 0);
-        Assert.assertEquals(78.5, circleField, 0);
+        Assert.assertEquals(78.54, circleField, 0.01);
     }
 }

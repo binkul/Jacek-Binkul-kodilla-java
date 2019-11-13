@@ -43,6 +43,6 @@ public class Triangle implements Shape {
     @Override
     public String toString() {
         DecimalFormat df = new DecimalFormat("0.00");
-        return this.name + ", field = " + df.format(getField());
+        return this.name + "(a: " + this.baseLength + ", h: " + this.height + ")";
     }
 }

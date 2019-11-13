@@ -13,7 +13,7 @@ public class ShapeCollector {
     }
 
     public boolean removeFigure(Shape shape) {
-        return shapes.remove(shape);
+        return shape != null && shapes.remove(shape);
     }
 
     public Shape getFigure(int n) {
