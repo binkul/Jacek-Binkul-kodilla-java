@@ -53,6 +53,8 @@ public class StreamMain {
 */
 
         /*
+=======
+>>>>>>> origin/Task_7_1
         PoemBeautifier poemBeautifier = new PoemBeautifier();
         poemBeautifier.beautify("Jacek Binkul", text -> "### " + text + " ###");
         poemBeautifier.beautify("Lato było przedziwne tego roku", text -> text.replaceAll(" ", "_"));
@@ -68,6 +70,7 @@ public class StreamMain {
             return result;
         };
         System.out.println("Text from back: " + poemDecorator.decorate("Jacek Binkul"));
+<<<<<<< HEAD
         System.out.println();
 
         System.out.println("Using Stream to generate even numbers from 1 to 20");
