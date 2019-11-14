@@ -11,6 +11,6 @@ public final class Forum {
     }
 
     public List<ForumUser> getUserList() {
-        return new ArrayList<>(this.forumUser);
+        return new ArrayList<>(forumUser);
     }
 }
