@@ -55,6 +55,8 @@ public class StreamMain {
         /*
 =======
 >>>>>>> origin/Task_7_1
+=======
+>>>>>>> origin/Task_7_1
         PoemBeautifier poemBeautifier = new PoemBeautifier();
         poemBeautifier.beautify("Jacek Binkul", text -> "### " + text + " ###");
         poemBeautifier.beautify("Lato było przedziwne tego roku", text -> text.replaceAll(" ", "_"));
@@ -70,6 +72,7 @@ public class StreamMain {
             return result;
         };
         System.out.println("Text from back: " + poemDecorator.decorate("Jacek Binkul"));
+<<<<<<< HEAD
 <<<<<<< HEAD
         System.out.println();
 
