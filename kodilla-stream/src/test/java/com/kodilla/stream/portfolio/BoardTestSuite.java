@@ -160,8 +160,7 @@ public class BoardTestSuite {
                 .flatMap(l -> l.getTasks().stream())
                 .map(l -> l.getCreated())
                 .map(l -> l.until(LocalDate.now(), DAYS))
-                //.map(l -> ChronoUnit.DAYS.between(l, LocalDate.now()))
-                .reduce(Long.valueOf(0) , (sum, current) -> sum = sum + current);
+                .reduce(0L , (sum, current) -> sum = sum + current);
 
         double avrDaysFirstMethod = (double) taskDaysInProgressSum / tasksInProgressCount;
 
@@ -170,7 +169,6 @@ public class BoardTestSuite {
                 .flatMap(l -> l.getTasks().stream())
                 .map(l -> l.getCreated())
                 .map(l -> DAYS.between(l, LocalDate.now()))
-                //.map(l -> l.until(LocalDate.now(), ChronoUnit.DAYS))
                 .mapToLong(l -> l)
                 .average().getAsDouble();
 
