@@ -4,11 +4,16 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 public class BoardTestSuite {
+
     public Board prepareTestData() {
         //users
         User user1 = new User("developer1", "John Smith");
@@ -136,5 +141,41 @@ public class BoardTestSuite {
 
         //Then
         Assert.assertEquals(2, longTasks);
+    }
+
+    @Test
+    public void testAddTaskListAverageWorkingOnTask() {
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        long tasksInProgressCount = project.getTaskLists().stream()
+                .filter(l -> inProgressTasks.contains(l))
+                .flatMap(l -> l.getTasks().stream())
+                .count();
+        long taskDaysInProgressSum = project.getTaskLists().stream()
+                .filter(l -> inProgressTasks.contains(l))
+                .flatMap(l -> l.getTasks().stream())
+                .map(l -> l.getCreated())
+                .map(l -> l.until(LocalDate.now(), DAYS))
+                .reduce(0L , (sum, current) -> sum = sum + current);
+
+        double avrDaysFirstMethod = (double) taskDaysInProgressSum / tasksInProgressCount;
+
+        double avrDaysSecondMethod = project.getTaskLists().stream()
+                .filter(l -> inProgressTasks.contains(l))
+                .flatMap(l -> l.getTasks().stream())
+                .map(l -> l.getCreated())
+                .map(l -> DAYS.between(l, LocalDate.now()))
+                .mapToLong(l -> l)
+                .average().getAsDouble();
+
+        //Then
+        Assert.assertEquals(3, tasksInProgressCount);
+        Assert.assertEquals(30, taskDaysInProgressSum);
+        Assert.assertEquals(10, avrDaysFirstMethod, 0.0001);
+        Assert.assertEquals(avrDaysFirstMethod, avrDaysSecondMethod, 0);
     }
 }
