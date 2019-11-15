@@ -9,18 +9,18 @@ public class WorldTestSuite {
     @Test
     public void testGetPeopleQuantity() {
         //Given
-        Country country1 = new Country("Poland", "Warszawa", 40000000);
-        Country country2 = new Country("Francja", "Paryż", 67364357);
-        Country country3 = new Country("Rosja", "Moskwa", 142122776);
-        Country country4 = new Country("Japonia", "Tokio", 126168156);
-        Country country5 = new Country("Chiny", "Pekin", 1384688986);
-        Country country6 = new Country("Indie", "Delhi", 1296834042);
-        Country country7 = new Country("USA", "Waszyngton", 329256465);
-        Country country8 = new Country("Meksyk", "Meksyk", 125959205);
-        Country country9 = new Country("Australia", "Sydney", 23470145);
-        Country country10 = new Country("Kamerun", "Jaunde", 25640965);
-        Country country11 = new Country("Kenia", "Nairobi", 48397527);
-        Country country12 = new Country("Uganda", "Kampala", 40853749);
+        Country country1 = new Country("Poland", "Warszawa", new BigDecimal("40000000"));
+        Country country2 = new Country("Francja", "Paryż", new BigDecimal("67364357"));
+        Country country3 = new Country("Rosja", "Moskwa", new BigDecimal("142122776"));
+        Country country4 = new Country("Japonia", "Tokio", new BigDecimal("126168156"));
+        Country country5 = new Country("Chiny", "Pekin", new BigDecimal("1384688986"));
+        Country country6 = new Country("Indie", "Delhi", new BigDecimal("1296834042"));
+        Country country7 = new Country("USA", "Waszyngton", new BigDecimal("329256465"));
+        Country country8 = new Country("Meksyk", "Meksyk", new BigDecimal("125959205"));
+        Country country9 = new Country("Australia", "Sydney", new BigDecimal("23470145"));
+        Country country10 = new Country("Kamerun", "Jaunde", new BigDecimal("25640965"));
+        Country country11 = new Country("Kenia", "Nairobi", new BigDecimal("48397527"));
+        Country country12 = new Country("Uganda", "Kampala", new BigDecimal("40853749"));
         Continent continent1 = new Continent("Europa");
         Continent continent2 = new Continent("Azja");
         Continent continent3 = new Continent("Afryka");
@@ -56,20 +56,20 @@ public class WorldTestSuite {
     @Test
     public void testGetAlienQuantity() {
         //Given
-        Country country1 = new Country("Poland", "Warszawa", 40000000);
-        Country country2 = new Country("Francja", "Paryż", 67364357);
-        Country country3 = new Country("Rosja", "Moskwa", 142122776);
-        Country country4 = new Country("Japonia", "Tokio", 126168156);
-        Country country5 = new Country("Chiny", "Pekin", 1384688986);
-        Country country6 = new Country("Indie", "Delhi", 1296834042);
+        Country country1 = new Country("Poland", "Warszawa",  new BigDecimal("40000000"));
+        Country country2 = new Country("Francja", "Paryż", new BigDecimal("67364357"));
+        Country country3 = new Country("Rosja", "Moskwa", new BigDecimal("142122776"));
+        Country country4 = new Country("Japonia", "Tokio", new BigDecimal("126168156"));
+        Country country5 = new Country("Chiny", "Pekin", new BigDecimal("1384688986"));
+        Country country6 = new Country("Indie", "Delhi", new BigDecimal("1296834042"));
         Continent continent1 = new Continent("Europa");
         Continent continent2 = new Continent("Azja");
-        Country country7 = new Country("Macka", "Macka", 400000000);
-        Country country8 = new Country("Stepownia", "Stopa", 689000000);
-        Country country9 = new Country("Trojnogia", "Jedna noga", 1234567891);
-        Country country10 = new Country("Mutancja", "Dwugłowia", 345612896);
-        Country country11 = new Country("Psiarnia", "Kot", 1118976579);
-        Country country12 = new Country("Głaskonia", "Ogon", 800000000);
+        Country country7 = new Country("Macka", "Macka", new BigDecimal("400000000"));
+        Country country8 = new Country("Stepownia", "Stopa", new BigDecimal("689000000"));
+        Country country9 = new Country("Trojnogia", "Jedna noga", new BigDecimal("1234567891"));
+        Country country10 = new Country("Mutancja", "Dwugłowia", new BigDecimal("345612896"));
+        Country country11 = new Country("Psiarnia", "Kot", new BigDecimal("1118976579"));
+        Country country12 = new Country("Głaskonia", "Ogon", new BigDecimal("800000000"));
         Continent continent3 = new Continent("Mars północ");
         Continent continent4 = new Continent("Mars południe");
         World world1 = new World("Ziemia");

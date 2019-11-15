@@ -17,14 +17,14 @@ public final class World {
     }
 
     public List<Continent> getContinents() {
-        return new LinkedList<>(this.continents);
+        return new LinkedList<>(continents);
     }
 
     public BigDecimal getPeopleQuantity() {
         return continents.stream()
                 .flatMap(continent -> continent.getCountries().stream())
                 .map(country -> country.getPeopleQuantity())
-                .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public int getCountryCount() {
