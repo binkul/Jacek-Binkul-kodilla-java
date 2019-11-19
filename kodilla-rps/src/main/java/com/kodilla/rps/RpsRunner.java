@@ -4,24 +4,31 @@ public class RpsRunner {
     public static void main(String[] args) {
         boolean end = false;
         char keyValue;
-        RpsLanguages language;
 
-        ConsoleInterface consoleInterface = new ConsoleInterface();
-        GameResults gameResults = new GameResults();
-        GameLogic gameLogic = new GameLogic();
-        GameSettings gameSettings = consoleInterface.setGameSettings();
-        language = gameSettings.getLanguage();
+        GameSettings gameSettings = new GameSettings();
+        Game game = new Game();
+        GameResolver gameResolver = new GameResolver();
         System.out.println(gameSettings);
+        System.out.println(gameSettings.getLanguage().getGameInformation());
 
         while(!end) {
-            keyValue = consoleInterface.getKeyValue(language);
+            keyValue = ConsoleInterface.getKeyValue(gameSettings.getLanguage());
             if (keyValue >= '1' && keyValue <= '5') {
-                end = gameLogic.computerMove(gameResults, consoleInterface);
-            } else if (keyValue == 'x') {
-                end = consoleInterface.askForGameEnd(language);
-            } else if (keyValue == 'n') {
-                if (consoleInterface.askForNewGame(language)) {
+                Round round = gameResolver.getRound(gameSettings, keyValue);
+                game.addRound(round);
+                if (game.checkForEndGame(gameSettings)) {
 
+                }
+
+            } else if (keyValue == 'x') {
+                end = ConsoleInterface.askForGameEnd(gameSettings.getLanguage());
+
+            } else if (keyValue == 'n') {
+                if (ConsoleInterface.askForNewGame(gameSettings.getLanguage())) {
+                    gameSettings.setMaxRound();
+                    game = new Game();
+                } else {
+                    end = true;
                 }
             }
         }

@@ -5,91 +5,99 @@ import java.util.Scanner;
 public class ConsoleInterface {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public GameSettings setGameSettings() {
+    public static int setMaxRound(RpsLanguages rpsLanguages) {
 
-        return null;
-    }
+        while(true) {
+            printRoundInvitation(rpsLanguages);
 
-    public int setMaxRound(RpsLanguages gameLanguage) {
-
-        return 0;
-    }
-
-    public String setName(RpsLanguages gameLanguage) {
-
-        return "";
-    }
-
-    public RpsLanguages setLanguage() {
-
-        return null;
-    }
-
-    public char getKeyValue(RpsLanguages gameLanguage) {
-
-        return 'x';
-    }
-
-    public boolean askForGameEnd(RpsLanguages gameLanguage) {
-
-        return true;
-    }
-
-    public boolean askForNewGame(RpsLanguages gameLanguage) {
-
-        return true;
-    }
-
-    private void printGameInvitation() {
-        System.out.println("Select language:");
-        System.out.println("[1] - Pl (polish)");
-        System.out.println("[2] - Eng (english)");
-    }
-
-    private void printNameInvitation(RpsLanguages gameLanguage) {
-        if (gameLanguage == RpsLanguages.PL) {
-            System.out.println("\nPodaj imię gracza:");
-        } else if (gameLanguage == RpsLanguages.ENG) {
-            System.out.println("\nInput name:");
+            if(scanner.hasNextInt()) {
+                int result = scanner.nextInt();
+                scanner.nextLine();
+                return result;
+            } else {
+                printRoundInputError(rpsLanguages);
+                scanner.nextLine();
+            }
         }
     }
 
-    private void printRoundInvitation(RpsLanguages gameLanguage) {
-        if (gameLanguage == RpsLanguages.PL) {
-            System.out.println("\nPodaj maksymalną ilość wygranych:");
-        } else if (gameLanguage == RpsLanguages.ENG) {
-            System.out.println("\nInput the maximum numbers of winnings :");
-        }
+    public static String setName(RpsLanguages rpsLanguages) {
+        printNameInvitation(rpsLanguages);
+        return scanner.nextLine();
     }
 
-    private void printRoundInputError(RpsLanguages gameLanguage) {
-        if (gameLanguage == RpsLanguages.PL) {
-            System.out.println("Wartość musi być liczba całkowitą!");
-        } else if (gameLanguage == RpsLanguages.ENG) {
-            System.out.println("Input number have to be integer number!");
+    public static RpsLanguages setLanguage() {
+        int tmp = 0;
+
+        while (tmp < 1 || tmp > 2) {
+            printLanguageInvitation();
+            if (scanner.hasNextInt()) {
+                tmp = scanner.nextInt();
+            } else {
+                scanner.next();
+            }
         }
+        scanner.nextLine();
+        return RpsLanguages.values()[tmp - 1];
     }
 
-    private void printGameInformation(RpsLanguages gameLanguage) {
-        System.out.println();
-        if (gameLanguage == RpsLanguages.PL) {
-            System.out.println("Informacje o grze:");
-            System.out.println("Klawisz [1] - zagranie 'kamień'");
-            System.out.println("Klawisz [2] - zagranie 'nożyce'");
-            System.out.println("Klawisz [3] - zagranie 'papier'");
-            System.out.println("Klawisz [4] - zagranie 'spock'");
-            System.out.println("Klawisz [5] - zagranie 'jaszczurka'");
-            System.out.println("Klawisz [x] - zakończenie gry");
-            System.out.println("Klawisz [n] - uruchom od nowa (zakończ obecną rozgrywkę)");
-        } else if (gameLanguage == RpsLanguages.ENG) {
-            System.out.println("Game information:");
-            System.out.println("Key [1] - play with 'rock'");
-            System.out.println("Key [2] - play with 'scissors'");
-            System.out.println("Key [3] - play with 'paper'");
-            System.out.println("Key [4] - play with 'spock'");
-            System.out.println("Key [5] - play with 'lizard'");
-            System.out.println("Key [x] - end of the game");
-            System.out.println("Key [n] - start again (finish current game)");
+    public static char getKeyValue(RpsLanguages gameLanguage) {
+        String answer = "0";
+
+        printStartRoundInvitation(gameLanguage);
+        answer = scanner.nextLine();
+        return answer.length() > 0 ? answer.toLowerCase().charAt(0) : '0';
+    }
+
+    public static boolean askForGameEnd(RpsLanguages gameLanguage) {
+        String answer;
+        char tmp = '0';
+
+        while (!(tmp == 'y' || tmp == 'n')) {
+            printEndTheGameInvitation(gameLanguage);
+            answer = scanner.nextLine();
+            tmp = answer.length() > 0 ? answer.toLowerCase().charAt(0) : '0';
         }
+        return tmp == 'y';
+    }
+
+    public static boolean askForNewGame(RpsLanguages gameLanguage) {
+        String answer;
+        char tmp = '0';
+
+        while (!(tmp == 'y' || tmp == 'n')) {
+            printNewGameInvitation(gameLanguage);
+            answer = scanner.nextLine();
+            tmp = answer.length() > 0 ? answer.toLowerCase().charAt(0) : '0';
+        }
+        return tmp == 'y';
+    }
+
+    private static void printLanguageInvitation() {
+        System.out.println(RpsCaptions.LANGUAGE_SELECT);
+    }
+
+    private static void printNameInvitation(RpsLanguages rpsLanguages) {
+        System.out.println(rpsLanguages.getInputName());
+    }
+
+    private static void printRoundInvitation(RpsLanguages rpsLanguages) {
+        System.out.println(rpsLanguages.getInputMaxWin());
+    }
+
+    private static void printRoundInputError(RpsLanguages rpsLanguages) {
+        System.out.println(rpsLanguages.getMaxWinError());
+    }
+
+    private static void printStartRoundInvitation(RpsLanguages rpsLanguages) {
+        System.out.println(rpsLanguages.getRoundStart());
+    }
+
+    private static void printEndTheGameInvitation(RpsLanguages rpsLanguages) {
+        System.out.println(rpsLanguages.getEndTheGame());
+    }
+
+    private static void printNewGameInvitation(RpsLanguages rpsLanguages) {
+        System.out.println(rpsLanguages.getStartTheGame());
     }
 }

@@ -1,14 +1,14 @@
 package com.kodilla.rps;
 
 public class GameSettings {
-    private RpsLanguages language;
+    private RpsLanguages language = RpsLanguages.PL;
     private String name;
     private int maxRound;
 
-    public GameSettings(RpsLanguages language, String name, int maxRoundToVin) {
-        this.language = language;
-        this.name = name;
-        this.maxRound = maxRoundToVin;
+    public GameSettings() {
+        setLanguage();
+        setName();
+        setMaxRound();
     }
 
     public RpsLanguages getLanguage() {
@@ -23,35 +23,20 @@ public class GameSettings {
         return maxRound;
     }
 
-    public void setLanguage(RpsLanguages language) {
-        this.language = language;
+    public void setLanguage() {
+        language = ConsoleInterface.setLanguage();
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName() {
+        name = ConsoleInterface.setName(language);
     }
 
-    public void setMaxRound(int maxRound) {
-        this.maxRound = maxRound;
+    public void setMaxRound() {
+        maxRound = ConsoleInterface.setMaxRound(language);
     }
 
     @Override
     public String toString() {
-        String result = "";
-        if (language == RpsLanguages.PL) {
-            result = "Ustawienia gry {" +
-                    "język = " + language +
-                    ", imię gracza = '" + name + '\'' +
-                    ", ilość rund do wygranej = " + maxRound +
-                    "}\n";
-        } else if (language == RpsLanguages.ENG) {
-            result = "GameSettings {" +
-                    "language = " + language +
-                    ", name = '" + name + '\'' +
-                    ", maxRound = " + maxRound +
-                    "}\n";
-        }
-
-        return result;
+        return String.format(language.getGameSettings(), language.name(), name, maxRound);
     }
 }
