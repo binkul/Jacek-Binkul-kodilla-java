@@ -1,22 +1,24 @@
 package com.kodilla.rps;
 
 public enum RpsRules {
-    ROCK(RpsElements.LIZARD_RPS, RpsElements.SCISSORS_RPS, RpsElements.PAPER_RPS, RpsElements.SPOCK_RPS),
-    SCISSORS(RpsElements.PAPER_RPS, RpsElements.LIZARD_RPS, RpsElements.ROCK_RPS, RpsElements.SPOCK_RPS),
-    PAPER(RpsElements.SPOCK_RPS, RpsElements.ROCK_RPS, RpsElements.SCISSORS_RPS, RpsElements.LIZARD_RPS),
-    SPOCK(RpsElements.SCISSORS_RPS, RpsElements.ROCK_RPS, RpsElements.LIZARD_RPS, RpsElements.PAPER_RPS),
-    LIZARD(RpsElements.PAPER_RPS, RpsElements.SPOCK_RPS, RpsElements.SCISSORS_RPS, RpsElements.ROCK_RPS);
+    ROCK(RpsElements.ROCK_RPS, RpsElements.LIZARD_RPS, RpsElements.SCISSORS_RPS),
+    SCISSORS(RpsElements.SCISSORS_RPS, RpsElements.PAPER_RPS, RpsElements.LIZARD_RPS),
+    PAPER(RpsElements.PAPER_RPS, RpsElements.SPOCK_RPS, RpsElements.ROCK_RPS),
+    SPOCK(RpsElements.SPOCK_RPS, RpsElements.SCISSORS_RPS, RpsElements.ROCK_RPS),
+    LIZARD(RpsElements.LIZARD_RPS, RpsElements.PAPER_RPS, RpsElements.SPOCK_RPS);
 
+    private RpsElements originalRps;
     private RpsElements defeatFirst;
     private RpsElements defeatSecond;
-    private RpsElements enemyFirst;
-    private RpsElements enemySecond;
 
-    RpsRules(RpsElements defeatFirst, RpsElements defeatSecond, RpsElements enemyFirst, RpsElements enemySecond) {
+    RpsRules(RpsElements originalRps, RpsElements defeatFirst, RpsElements defeatSecond) {
+        this.originalRps = originalRps;
         this.defeatFirst = defeatFirst;
         this.defeatSecond = defeatSecond;
-        this.enemyFirst = enemyFirst;
-        this.enemySecond = enemySecond;
+    }
+
+    public RpsElements getOriginalRps() {
+        return originalRps;
     }
 
     public RpsElements getDefeatFirst() {
@@ -25,13 +27,5 @@ public enum RpsRules {
 
     public RpsElements getDefeatSecond() {
         return defeatSecond;
-    }
-
-    public RpsElements getEnemyFirst() {
-        return enemyFirst;
-    }
-
-    public RpsElements getEnemySecond() {
-        return enemySecond;
     }
 }

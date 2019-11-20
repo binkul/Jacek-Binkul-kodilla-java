@@ -35,8 +35,8 @@ public class GameSettings {
         maxRound = ConsoleInterface.setMaxRound(language);
     }
 
-    @Override
-    public String toString() {
-        return String.format(language.getGameSettings(), language.name(), name, maxRound);
+    public String printGameSettings() {
+        return String.format(getLanguage().getGameSettings(), getLanguage().name(), getName(), getMaxRound());
     }
+
 }

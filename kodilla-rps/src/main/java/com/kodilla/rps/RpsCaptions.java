@@ -48,4 +48,7 @@ public final class RpsCaptions {
 
     final static String COMPUTER_WIN_PL = "Grę wygrał komputer wynikiem %d:%d\n";
     final static String COMPUTER_WIN_EN = "The winner is computer with the result %d:%d\n";
+
+    final static String ROUND_RESULTS_PL = "Wynik rozgrywki '%s':komputer {ruch: '%s':'%s' , wynik rundy: %d:%d, wynik gry: %d:%d}\n";
+    final static String ROUND_RESULTS_EN = "Result '%s':computer {move: '%s':'%s' , round results: %d:%d, game results: %d:%d}\n";
 }

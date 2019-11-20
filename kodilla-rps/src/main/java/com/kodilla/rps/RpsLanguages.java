@@ -10,7 +10,8 @@ public enum RpsLanguages {
             RpsCaptions.END_THE_GAME_PL,
             RpsCaptions.START_THE_NEW_GAME_PL,
             RpsCaptions.GAMER_WIN_PL,
-            RpsCaptions.COMPUTER_WIN_PL),
+            RpsCaptions.COMPUTER_WIN_PL,
+            RpsCaptions.ROUND_RESULTS_PL),
     ENG(    RpsCaptions.INPUT_NAME_EN,
             RpsCaptions.INPUT_MAX_WIN_EN,
             RpsCaptions.MAX_WIN_ERROR_EN,
@@ -20,7 +21,8 @@ public enum RpsLanguages {
             RpsCaptions.END_THE_GAME_EN,
             RpsCaptions.START_THE_NEW_GAME_EN,
             RpsCaptions.GAMER_WIN_EN,
-            RpsCaptions.COMPUTER_WIN_EN);
+            RpsCaptions.COMPUTER_WIN_EN,
+            RpsCaptions.ROUND_RESULTS_EN);
 
     private String inputName;
     private String inputMaxWin;
@@ -32,9 +34,11 @@ public enum RpsLanguages {
     private String startTheGame;
     private String gamerWinTheGame;
     private String computerWinTheGame;
+    private String roundResults;
 
     RpsLanguages(String inputName, String inputMaxWin, String maxWinError, String gameSetting, String gameInformation,
-                 String roundStart, String endTheGame, String startTheGame, String gamerWinTheGame, String computerWinTheGame) {
+                 String roundStart, String endTheGame, String startTheGame, String gamerWinTheGame, String computerWinTheGame,
+                 String roundResults) {
         this.inputName = inputName;
         this.inputMaxWin = inputMaxWin;
         this.maxWinError = maxWinError;
@@ -45,6 +49,7 @@ public enum RpsLanguages {
         this.startTheGame = startTheGame;
         this.gamerWinTheGame = gamerWinTheGame;
         this.computerWinTheGame = computerWinTheGame;
+        this.roundResults = roundResults;
     }
 
     public String getInputName() {
@@ -85,5 +90,9 @@ public enum RpsLanguages {
 
     public String getComputerWinTheGame() {
         return computerWinTheGame;
+    }
+
+    public String getRoundResults() {
+        return roundResults;
     }
 }
