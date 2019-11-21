@@ -23,7 +23,7 @@ public class FirstChallenge {
             System.out.println(result);
         } catch (ArithmeticException ex) {
             System.out.println("Divide by zero detected. You have to change parameters.");
-            System.out.println("Exception description: " + ex);
+            //ex.printStackTrace(); - this optional. Up is description about Exception, we dont need StackTree!
             errorOccur = true;
         } finally {
             if (errorOccur) {
