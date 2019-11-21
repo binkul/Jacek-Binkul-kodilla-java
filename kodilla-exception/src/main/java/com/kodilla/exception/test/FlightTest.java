@@ -1,36 +1,33 @@
 package com.kodilla.exception.test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FlightTest {
-    private static List<Flight> generateFlights() {
-        List<Flight> result = new ArrayList<>();
+    private static Map<String, Boolean> generateAirports() {
+        Map<String, Boolean> result = new HashMap<>();
 
-        result.add(new Flight("Warszawa", "Berlin"));
-        result.add(new Flight("Warszawa", "Paryż"));
-        result.add(new Flight("Warszawa", "Londyn"));
-        result.add(new Flight("Warszawa", "Madryd"));
-        result.add(new Flight("Warszawa", "Dublin"));
-        result.add(new Flight("Warszawa", "Nowy Jork"));
-        result.add(new Flight("Berlin", "Warszawa"));
-        result.add(new Flight("Londyn", "Paryż"));
-        result.add(new Flight("Bukareszt", "Londyn"));
-        result.add(new Flight("Tokyo", "Madryd"));
-        result.add(new Flight("Dublin", "Londyn"));
-        result.add(new Flight("Katowice", "Rzym"));
+        result.put("Warsaw", true);
+        result.put("Paris", false);
+        result.put("London", true);
+        result.put("Berlin", true);
+        result.put("Katowice", true);
+        result.put("Moscow", true);
+        result.put("Hong Kong", false);
+        result.put("New York", false);
+        result.put("Tokyo", false);
 
         return result;
     }
 
     public static void main(String[] args) {
-        List<Flight> flights = generateFlights();
+        Map<String, Boolean> airports = generateAirports();
         boolean foundFlight = false;
 
-        FlightFinder flightFinder = new FlightFinder(flights);
+        FlightFinder flightFinder = new FlightFinder(airports);
 
         try {
-            foundFlight = flightFinder.findFlight(new Flight("Warszawa", "Lizbona"));
+            foundFlight = flightFinder.findFlight(new Flight("Warsaw", "Praha"));
         } catch (RouteNotFoundException ex) {
             System.out.println("Problem with flight: " + ex.getMessage());
         } finally {
