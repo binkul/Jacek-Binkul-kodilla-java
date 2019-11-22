@@ -1,7 +1,14 @@
 package com.kodilla.rps;
 
+import com.kodilla.rps.game.Game;
+
 public class RpsRunner {
     public static void main(String[] args) {
+
+        Game game = new Game();
+        game.startGame();
+
+/*
         boolean end = false;
         char keyValue;
 
@@ -19,5 +26,6 @@ public class RpsRunner {
                 end = game.startTheNewGame();
             }
         }
+*/
     }
 }
