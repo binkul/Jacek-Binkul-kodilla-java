@@ -2,9 +2,12 @@ package com.kodilla.rps.game;
 
 import com.kodilla.rps.constant.Captions;
 
+import java.util.stream.Stream;
+
 public enum Languages {
     PL(     Captions.INPUT_NAME_PL,
             Captions.INPUT_MAX_WIN_PL,
+            Captions.INPUT_CHEAT_LEVEL_PL,
             Captions.MAX_WIN_ERROR_PL,
             Captions.GAME_SETTING_PL,
             Captions.GAME_INFO_PL,
@@ -16,6 +19,7 @@ public enum Languages {
             Captions.ROUND_RESULTS_PL),
     ENG(    Captions.INPUT_NAME_EN,
             Captions.INPUT_MAX_WIN_EN,
+            Captions.INPUT_CHEAT_LEVEL_EN,
             Captions.MAX_WIN_ERROR_EN,
             Captions.GAME_SETTING_EN,
             Captions.GAME_INFO_EN,
@@ -28,6 +32,7 @@ public enum Languages {
 
     private String inputName;
     private String inputMaxWin;
+    private String inputCheatLevel;
     private String maxWinError;
     private String gameSettings;
     private String gameInformation;
@@ -38,11 +43,12 @@ public enum Languages {
     private String computerWinTheGame;
     private String roundResults;
 
-    Languages(String inputName, String inputMaxWin, String maxWinError, String gameSettings, String gameInformation,
+    Languages(String inputName, String inputMaxWin, String inputCheatLevel, String maxWinError, String gameSettings, String gameInformation,
               String roundStart, String endTheGame, String startTheGame, String gamerWinTheGame, String computerWinTheGame,
               String roundResults) {
         this.inputName = inputName;
         this.inputMaxWin = inputMaxWin;
+        this.inputCheatLevel = inputCheatLevel;
         this.maxWinError = maxWinError;
         this.gameSettings = gameSettings;
         this.gameInformation = gameInformation;
@@ -60,6 +66,10 @@ public enum Languages {
 
     public String getInputMaxWin() {
         return inputMaxWin;
+    }
+
+    public String getInputCheatLevel() {
+        return inputCheatLevel;
     }
 
     public String getMaxWinError() {

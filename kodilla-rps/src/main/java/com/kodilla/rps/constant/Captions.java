@@ -11,6 +11,13 @@ public final class Captions {
     public final static String INPUT_MAX_WIN_PL = "\nPodaj maksymalną ilość wygranych:";
     public final static String INPUT_MAX_WIN_EN = "\nInput the maximum numbers of winnings:";
 
+    public final static String INPUT_CHEAT_LEVEL_PL =   "\nPodaj poziom trudności:\n" +
+                                                        "[1] - czysta gra losowa\n" +
+                                                        "[2] - przewaga komputera 2:1";
+    public final static String INPUT_CHEAT_LEVEL_EN =   "\nInput level of difficulty:\n" +
+                                                        "[1] - pure random game\n" +
+                                                        "[2] - computer advantage 2:1";
+
     public final static String MAX_WIN_ERROR_PL = "Wartość musi być liczba całkowitą!";
     public final static String MAX_WIN_ERROR_EN = "Input number have to be integer number!";
 
@@ -43,12 +50,12 @@ public final class Captions {
     public final static String START_THE_NEW_GAME_PL = "Czy rozpocząć nowa grę? [y]/[n]";
     public final static String START_THE_NEW_GAME_EN = "Do You want to start the new game? [y]/[n]";
 
-    public final static String GAMER_WIN_PL = "Grę wygrał %s wynikiem %d:%d\n";
-    public final static String GAMER_WIN_EN = "The winner is %s with the result %d:%d\n";
+    public final static String GAMER_WIN_PL = "Grę wygrał '%s' wynikiem %d:%d\n";
+    public final static String GAMER_WIN_EN = "The winner is '%s' with the result %d:%d\n";
 
     public final static String COMPUTER_WIN_PL = "Grę wygrał komputer wynikiem %d:%d\n";
     public final static String COMPUTER_WIN_EN = "The winner is computer with the result %d:%d\n";
 
-    public final static String ROUND_RESULTS_PL = "Wynik rozgrywki '%s':komputer {ruch: '%s':'%s' , wynik rundy: %d:%d, wynik gry: %d:%d}\n";
-    public final static String ROUND_RESULTS_EN = "Result '%s':computer {move: '%s':'%s' , round results: %d:%d, game results: %d:%d}\n";
+    public final static String ROUND_RESULTS_PL = "Runda nr [%d], wyniki '%s':komputer {ruch: '%s':'%s' , wynik rundy: %s, wynik gry: %d:%d}\n";
+    public final static String ROUND_RESULTS_EN = "Round nr [%d], results '%s':computer {move: '%s':'%s' , round results: %s, game results: %d:%d}\n";
 }

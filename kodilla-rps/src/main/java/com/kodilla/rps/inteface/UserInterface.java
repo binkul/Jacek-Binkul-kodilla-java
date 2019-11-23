@@ -1,8 +1,9 @@
 package com.kodilla.rps.inteface;
 
 import com.kodilla.rps.constant.Captions;
-import com.kodilla.rps.game.Elements;
 import com.kodilla.rps.game.Languages;
+import com.kodilla.rps.logic.CheatLevels;
+import com.kodilla.rps.rps.RpsElements;
 
 import java.util.Scanner;
 import java.util.stream.Stream;
@@ -39,20 +40,34 @@ public class UserInterface {
                 scanner.nextLine();
                 return result;
             } else {
-                printRoundInputError(languages);
+                printRoundInputErrorInvitation(languages);
                 scanner.nextLine();
             }
         }
     }
 
-    public static Elements getKeyValue(Languages languages) {
+    public static CheatLevels getCheatLevel(Languages languages) {
+        String inputText;
+
+        while (true) {
+            printCheatLevelInvitation(languages);
+            inputText = scanner.nextLine();
+            if (inputText.equals("1")) {
+                return CheatLevels.RANDOM;
+            } else if (inputText.equals("2")) {
+                return  CheatLevels.CHEAT;
+            }
+        }
+    }
+
+    public static RpsElements getKeyValue(Languages languages) {
         String keyValue;
 
         while (true) {
-            printInputKeyValue(languages);
+            printInputKeyValueInvitation(languages);
             keyValue = scanner.nextLine().toLowerCase();
             if(validKey(keyValue)) {
-                return Elements.getElement(keyValue);
+                return RpsElements.getElement(keyValue);
             }
         }
     }
@@ -82,11 +97,11 @@ public class UserInterface {
     }
 
     private static boolean checkYesNo(String keyValue) {
-        return keyValue.equals(Answer.YES.getShortcut()) || keyValue.equals(Answer.NO.getShortcut());
+        return keyValue.equals(YesNo.YES.getShortcut()) || keyValue.equals(YesNo.NO.getShortcut());
     }
 
     private static boolean validKey(String keyValue) {
-        return Stream.of(Elements.values())
+        return Stream.of(RpsElements.values())
                 .anyMatch(n -> n.getShortcut().equals(keyValue));
     }
 
@@ -102,11 +117,15 @@ public class UserInterface {
         System.out.println(languages.getInputMaxWin());
     }
 
-    private static void printRoundInputError(Languages languages) {
+    private static void printCheatLevelInvitation(Languages languages) {
+        System.out.println(languages.getInputCheatLevel());
+    }
+
+    private static void printRoundInputErrorInvitation(Languages languages) {
         System.out.println(languages.getMaxWinError());
     }
 
-    private static void printInputKeyValue(Languages languages) {
+    private static void printInputKeyValueInvitation(Languages languages) {
         System.out.println(languages.getRoundStart());
     }
 

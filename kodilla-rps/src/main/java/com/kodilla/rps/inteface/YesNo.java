@@ -1,12 +1,12 @@
 package com.kodilla.rps.inteface;
 
-public enum Answer {
+public enum YesNo {
     YES("y"),
     NO("n");
 
     private String shortcut;
 
-    Answer(String answer) {
+    YesNo(String answer) {
         this.shortcut = answer;
     }
 

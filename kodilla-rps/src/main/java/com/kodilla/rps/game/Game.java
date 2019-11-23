@@ -1,16 +1,18 @@
 package com.kodilla.rps.game;
 
-import com.kodilla.rps.logic.Gamer;
+import com.kodilla.rps.rps.RpsElements;
+import com.kodilla.rps.inteface.UserInterface;
+import com.kodilla.rps.logic.CheatLevels;
+import com.kodilla.rps.logic.GamerMove;
 import com.kodilla.rps.round.Result;
 import com.kodilla.rps.round.Round;
-import com.kodilla.rps.inteface.UserInterface;
 
 public class Game {
     private Settings settings;
     private Statistics statistics;
 
     public Game() {
-        settings = new Settings(Languages.ENG, "No Name", 0);
+        settings = new Settings(Languages.ENG, "No Name", 0, CheatLevels.RANDOM);
         statistics = new Statistics();
     }
 
@@ -18,8 +20,9 @@ public class Game {
         settings.setLanguage(UserInterface.getLanguage());
         settings.setName(UserInterface.getName(settings.getLanguage()));
         settings.setMaxRoundToEnd(UserInterface.getMaxRound(settings.getLanguage()));
+        settings.setCheatLevel(UserInterface.getCheatLevel(settings.getLanguage()));
 
-        System.out.println(settings.printGameSettings());
+        System.out.println(settings);
         System.out.println(settings.getLanguage().getGameInformation());
 
         run();
@@ -29,10 +32,10 @@ public class Game {
         boolean end = false;
 
         while(!end) {
-            Elements gamerMove = new Gamer().getMove(settings.getLanguage());
-            if (gamerMove == Elements.EXIT) {
+            RpsElements gamerMove = new GamerMove(settings.getLanguage()).getMove();
+            if (gamerMove == RpsElements.EXIT) {
                 end = UserInterface.askForExit(settings.getLanguage());
-            } else if (gamerMove == Elements.NEW_GAME) {
+            } else if (gamerMove == RpsElements.NEW_GAME) {
                 end = startNewGame();
             } else {
                 end = startNewRound(gamerMove);
@@ -40,21 +43,31 @@ public class Game {
         }
     }
 
-    private boolean startNewRound(Elements gamerMove) {
-
-        Result result = new Round(settings).run(gamerMove);
+    private boolean startNewRound(RpsElements gamerMove) {
+        Round round = new Round(settings, statistics);
+        Result result = round.runRound(gamerMove);
         updateStatistics(result);
+        System.out.println(round);
 
-        return checkForEndGame();
+        return checkForGameEnd();
     }
 
-    private boolean checkForEndGame() {
-
+    private boolean checkForGameEnd() {
         if (Math.abs(statistics.getComputerWinCounter() - statistics.getGamerWinCounter()) >= settings.getMaxRoundToEnd()) {
+            System.out.println(this);
             return startNewGame();
         }
 
         return false;
+    }
+
+    private boolean startNewGame() {
+        if (UserInterface.askForNewGame(settings.getLanguage())) {
+            statistics.resetStatistics();
+            return false;
+        }
+
+        return true;
     }
 
     private void updateStatistics(Result result) {
@@ -63,20 +76,25 @@ public class Game {
             statistics.setEqualCounter(statistics.getEqualCounter() + 1);
             statistics.setComputerWinCounter(statistics.getComputerWinCounter() + 1);
             statistics.setGamerWinCounter(statistics.getGamerWinCounter() + 1);
+            statistics.setLastResult("1:1");
         } else if (result == Result.WINNER) {
             statistics.setGamerWinCounter(statistics.getGamerWinCounter() + 1);
+            statistics.setLastResult("1:0");
         } else {
             statistics.setComputerWinCounter(statistics.getComputerWinCounter() + 1);
+            statistics.setLastResult("0:1");
         }
+
     }
 
-    private boolean startNewGame() {
-        boolean newGame = !UserInterface.askForNewGame(settings.getLanguage());
-
-        if (newGame) {
-            statistics.resetStatistics();
+    @Override
+    public String toString() {
+        if (statistics.getGamerWinCounter() > statistics.getComputerWinCounter()) {
+            return String.format(settings.getLanguage().getGamerWinTheGame(), settings.getName(),
+                    statistics.getGamerWinCounter(), statistics.getComputerWinCounter());
+        } else {
+            return String.format(settings.getLanguage().getComputerWinTheGame(),
+                    statistics.getGamerWinCounter(), statistics.getComputerWinCounter());
         }
-
-        return newGame;
     }
 }

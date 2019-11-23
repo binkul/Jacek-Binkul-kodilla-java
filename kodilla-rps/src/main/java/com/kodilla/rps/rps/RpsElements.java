@@ -1,8 +1,8 @@
-package com.kodilla.rps.game;
+package com.kodilla.rps.rps;
 
 import java.util.stream.Stream;
 
-public enum Elements {
+public enum RpsElements {
     ROCK("1"),
     SCISSORS("2"),
     PAPER("3"),
@@ -13,7 +13,7 @@ public enum Elements {
 
     private String shortcut;
 
-    Elements(String shortcut) {
+    RpsElements(String shortcut) {
         this.shortcut = shortcut;
     }
 
@@ -21,8 +21,8 @@ public enum Elements {
         return shortcut;
     }
 
-    public static Elements getElement(String element) {
-        return Stream.of(Elements.values())
+    public static RpsElements getElement(String element) {
+        return Stream.of(RpsElements.values())
                 .filter(n -> n.getShortcut().equals(element))
                 .findFirst()
                 .orElse(null);

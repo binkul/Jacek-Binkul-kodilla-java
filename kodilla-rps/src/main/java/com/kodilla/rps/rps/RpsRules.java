@@ -1,23 +1,21 @@
 package com.kodilla.rps.rps;
 
-import com.kodilla.rps.game.Elements;
-
 import java.util.stream.Stream;
 
 public enum RpsRules {
-    ROCK(Elements.ROCK, Elements.LIZARD, Elements.SCISSORS, "Kamień", "Rock"),
-    SCISSORS(Elements.SCISSORS, Elements.PAPER, Elements.LIZARD, "Nożyce", "Scissors"),
-    PAPER(Elements.PAPER, Elements.ROCK, Elements.SPOCK, "Papier", "Paper"),
-    SPOCK(Elements.SPOCK, Elements.SCISSORS, Elements.ROCK, "Spock", "Spock"),
-    LIZARD(Elements.LIZARD, Elements.PAPER, Elements.SPOCK, "Jaszczurka", "Jaszczurka");
+    ROCK(RpsElements.ROCK, RpsElements.LIZARD, RpsElements.SCISSORS, "Kamień", "Rock"),
+    SCISSORS(RpsElements.SCISSORS, RpsElements.PAPER, RpsElements.LIZARD, "Nożyce", "Scissors"),
+    PAPER(RpsElements.PAPER, RpsElements.ROCK, RpsElements.SPOCK, "Papier", "Paper"),
+    SPOCK(RpsElements.SPOCK, RpsElements.SCISSORS, RpsElements.ROCK, "Spock", "Spock"),
+    LIZARD(RpsElements.LIZARD, RpsElements.PAPER, RpsElements.SPOCK, "Jaszczurka", "Jaszczurka");
 
-    private Elements originalRps;
-    private Elements defeatFirst;
-    private Elements defeatSecond;
+    private RpsElements originalRps;
+    private RpsElements defeatFirst;
+    private RpsElements defeatSecond;
     private String namePl;
     private String nameEn;
 
-    RpsRules(Elements originalRps, Elements defeatFirst, Elements defeatSecond, String namePl, String nameEn) {
+    RpsRules(RpsElements originalRps, RpsElements defeatFirst, RpsElements defeatSecond, String namePl, String nameEn) {
         this.originalRps = originalRps;
         this.defeatFirst = defeatFirst;
         this.defeatSecond = defeatSecond;
@@ -25,15 +23,11 @@ public enum RpsRules {
         this.nameEn = nameEn;
     }
 
-    public Elements getOriginalRps() {
-        return originalRps;
-    }
-
-    public Elements getDefeatFirst() {
+    public RpsElements getDefeatFirst() {
         return defeatFirst;
     }
 
-    public Elements getDefeatSecond() {
+    public RpsElements getDefeatSecond() {
         return defeatSecond;
     }
 
@@ -45,7 +39,7 @@ public enum RpsRules {
         return nameEn;
     }
 
-    public static RpsRules getElement(Elements elements) {
+    public static RpsRules getElement(RpsElements elements) {
         return Stream.of(RpsRules.values())
                 .filter(n -> n.originalRps.equals(elements))
                 .findFirst()

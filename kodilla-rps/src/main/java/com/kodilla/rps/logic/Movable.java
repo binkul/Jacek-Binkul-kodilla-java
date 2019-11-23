@@ -1,8 +1,7 @@
 package com.kodilla.rps.logic;
 
-import com.kodilla.rps.game.Elements;
-import com.kodilla.rps.game.Languages;
+import com.kodilla.rps.rps.RpsElements;
 
 public interface Movable {
-    Elements getMove(Languages languages);
+    RpsElements getMove();
 }
