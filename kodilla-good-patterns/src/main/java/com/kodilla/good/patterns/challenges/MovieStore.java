@@ -4,11 +4,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class MovieStore {
-    private final Map<String, List<String>> movies;
-
-    public MovieStore() {
-        this.movies = getMovies();
-    }
 
     public Map<String, List<String>> getMovies() {
 
@@ -32,10 +27,9 @@ public class MovieStore {
         return booksTitlesWithTranslations;
     }
 
-    @Override
-    public String toString() {
-        return movies.values().stream()
+    public String concat() {
+        return getMovies().values().stream()
                 .flatMap(Collection::stream)
-                .collect(Collectors.joining(" ! ", "\n", "\n"));
+                .collect(Collectors.joining(" ! ", "<<", ">>"));
     }
 }
