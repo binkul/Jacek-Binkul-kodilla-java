@@ -6,7 +6,6 @@ import com.kodilla.good.patterns.food.OrderService;
 import com.kodilla.good.patterns.food.information.InformationService;
 import com.kodilla.good.patterns.food.product.Product;
 import com.kodilla.good.patterns.food.product.ProductDao;
-import com.kodilla.good.patterns.food.product.ProductDaoConst;
 import com.kodilla.good.patterns.food.product.ProductDaoFile;
 import com.kodilla.good.patterns.food.repo.OrderRepositoryService;
 

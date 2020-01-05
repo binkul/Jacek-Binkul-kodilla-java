@@ -1,7 +1,9 @@
 package com.kodilla.good.patterns.food.product;
 
 import java.io.*;
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProductDaoFile extends ProductDaoCommon implements ProductDao {
     private final String path;

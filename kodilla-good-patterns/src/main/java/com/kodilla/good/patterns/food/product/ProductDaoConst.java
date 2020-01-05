@@ -1,6 +1,8 @@
 package com.kodilla.good.patterns.food.product;
 
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProductDaoConst extends ProductDaoCommon implements ProductDao {
     private final String[] productList;

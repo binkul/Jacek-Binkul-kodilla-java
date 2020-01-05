@@ -22,7 +22,7 @@ public class ProductDaoCommon {
 
     private Currency convertToCurrency(String symbol) {
         return Stream.of(Currency.values())
-                .filter(n -> n.getSymbol().toLowerCase().equals(symbol))
+                .filter(n -> n.name().toLowerCase().equals(symbol))
                 .findFirst()
                 .orElse(Currency.NONE);
     }

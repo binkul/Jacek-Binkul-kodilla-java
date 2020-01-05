@@ -7,7 +7,7 @@ public class OrderRequestRetriever {
     public OrderRequest retrieve() {
         LocalDate localDate = LocalDate.now();
         String product = "Eco radish";
-        int amount = 200;
+        int amount = 60;
 
         return new OrderRequest(1, localDate, product, amount);
     }
