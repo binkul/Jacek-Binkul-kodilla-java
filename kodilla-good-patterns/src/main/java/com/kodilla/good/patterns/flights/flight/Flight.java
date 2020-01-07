@@ -4,21 +4,21 @@ import java.util.Objects;
 
 public class Flight {
     private final String number;
+    private final String departure;
     private final String destination;
-    private final String arrival;
 
-    public Flight(final String number, final String destination, final String arrival) {
+    public Flight(final String number, final String departure, final String destination) {
+        this.departure = departure;
         this.destination = destination;
-        this.arrival = arrival;
         this.number = number;
+    }
+
+    public String getDeparture() {
+        return departure;
     }
 
     public String getDestination() {
         return destination;
-    }
-
-    public String getArrival() {
-        return arrival;
     }
 
     public String getNumber() {
@@ -27,7 +27,7 @@ public class Flight {
 
     @Override
     public String toString() {
-        return  String.format("Flight number '%s' From %s To %s", number, destination, arrival);
+        return  String.format("Flight number '%s' From %s To %s", number, departure, destination);
     }
 
     @Override
@@ -37,12 +37,12 @@ public class Flight {
         if (!(o instanceof Flight)) return false;
         Flight flight = (Flight) o;
         return Objects.equals(number, flight.number) &&
-                Objects.equals(destination, flight.destination) &&
-                Objects.equals(arrival, flight.arrival);
+                Objects.equals(departure, flight.departure) &&
+                Objects.equals(destination, flight.destination);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number, destination, arrival);
+        return Objects.hash(number, departure, destination);
     }
 }

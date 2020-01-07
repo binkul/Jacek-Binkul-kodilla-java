@@ -20,7 +20,7 @@ public class FlightVia {
     }
 
     public void printConnection() {
-        System.out.println("\nConnection from: " + flightFrom.getDestination() + " to " + flightTo.getArrival() + ", via " + flightFrom.getArrival());
+        System.out.println("\nConnection from: " + flightFrom.getDeparture() + " to " + flightTo.getDestination() + ", via " + flightFrom.getDestination());
         System.out.println(flightFrom);
         System.out.println(flightTo);
     }
