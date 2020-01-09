@@ -1,14 +1,14 @@
 package com.kodilla.spring.calculator;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class Calculator {
-    @Autowired
-    private Display display;
-    @Autowired
-    private DivideByZero divideByZero;
+    private final Display display;
+
+    public Calculator(Display display) {
+        this.display = display;
+    }
 
     public double add(double a, double b) {
         double result = a + b;
@@ -38,8 +38,7 @@ public class Calculator {
             result = a / b;
             display.displayValue(result);
         } else {
-            result = Double.NaN;
-            divideByZero.printDivideByZeroError();
+            throw new IllegalArgumentException("Dividing by zero!");
         }
 
         return result;

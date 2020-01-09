@@ -52,9 +52,12 @@ public class CalculatorTestSuite {
         Calculator calculator = (Calculator)context.getBean("calculator");
 
         //When
-        double division = calculator.div(15, 0);
+        try {
+            calculator.div(15, 0);
+        } catch (IllegalArgumentException ex) {
+            System.out.println("Dividing by zero!");
+        }
 
         //Then
-        Assert.assertTrue(Double.isNaN(division));
     }
 }
