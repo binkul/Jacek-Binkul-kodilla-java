@@ -16,7 +16,7 @@ public class BoardTestSuite {
     public void testTaskAdd() {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
-        Board board = (Board) context.getBean("getBoard");
+        Board board = (Board) context.getBean("board");
 
         board.getToDoList().addTask("Task one is to do.");
         board.getInProgressList().addTask("Task two is in progress.");
@@ -80,12 +80,12 @@ public class BoardTestSuite {
     public void testBeansExists() {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
-        Board board = (Board) context.getBean("getBoard");
+        Board board = (Board) context.getBean("board");
 
         //When
-        boolean taskOneExist = context.containsBean("taskList1");
-        boolean taskTwoExist = context.containsBean("taskList2");
-        boolean taskThreeExist = context.containsBean("taskList3");
+        boolean taskOneExist = context.containsBean("toDoList");
+        boolean taskTwoExist = context.containsBean("inProgressList");
+        boolean taskThreeExist = context.containsBean("doneList");
 
         //Then
         Assert.assertTrue(taskOneExist);
