@@ -25,6 +25,14 @@ public class Library extends Prototype {
         return books;
     }
 
+    public void addBook(Book book) {
+        books.add(book);
+    }
+
+    public String getFirstBookAuthor() {
+        return books.iterator().hasNext() ? books.iterator().next().getAuthor() : null;
+    }
+
     public Library shallowCopy() throws CloneNotSupportedException {
         return (Library) super.clone();
     }
@@ -33,16 +41,16 @@ public class Library extends Prototype {
         Library clonedLibrary = shallowCopy();
         clonedLibrary.books = new HashSet<>();
 
-        books.forEach(i -> clonedLibrary.getBooks().add(i));
+        books.forEach(i -> clonedLibrary.addBook(new Book(i.getTitle(), i.getAuthor(), i.getPublicationDate())));
         return clonedLibrary;
     }
 
     @Override
     public String toString() {
-        String s = "Library '" + name + "':\n";
+        StringBuilder s = new StringBuilder("Library '" + name + "':\n");
         for(Book book : books) {
-            s = s + book.toString() + "\n";
+            s.append(book.toString()).append("\n");
         }
-        return s;
+        return s.toString();
     }
 }

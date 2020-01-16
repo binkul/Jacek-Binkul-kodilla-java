@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Book {
     private final String title;
-    private final String author;
+    private String author;
     private final LocalDate publicationDate;
 
     public Book(final String title, final String author, final LocalDate publicationDate) {
@@ -24,6 +24,10 @@ public class Book {
 
     public LocalDate getPublicationDate() {
         return publicationDate;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     @Override
