@@ -1,6 +1,6 @@
 package com.kodilla.patterns.builder.bigmac.type;
 
-public enum IngredientsType {
+public enum Ingredient {
     SALAD("Salad"),
     ONION("Onion"),
     BACON("Bacon"),
@@ -12,7 +12,7 @@ public enum IngredientsType {
 
     private final String name;
 
-    IngredientsType(String name) {
+    Ingredient(String name) {
         this.name = name;
     }
 

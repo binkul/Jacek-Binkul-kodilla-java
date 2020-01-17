@@ -1,8 +1,8 @@
 package com.kodilla.patterns.builder.bigmac;
 
-import com.kodilla.patterns.builder.bigmac.type.BunType;
-import com.kodilla.patterns.builder.bigmac.type.IngredientsType;
-import com.kodilla.patterns.builder.bigmac.type.SauceType;
+import com.kodilla.patterns.builder.bigmac.type.Bun;
+import com.kodilla.patterns.builder.bigmac.type.Ingredient;
+import com.kodilla.patterns.builder.bigmac.type.Sauce;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -23,22 +23,22 @@ public class BigMacTestSuite {
     public void testBigMacNew() {
         //Given
         BigMac bigMac = new BigMac.BigMacBuilder()
-                .bun(BunType.SESAME_BUN)
+                .bun(Bun.SESAME_BUN)
                 .burgers(2)
-                .ingredients(IngredientsType.CHEESE)
-                .sauce(SauceType.THOUSAND_ISLAND)
-                .ingredients(IngredientsType.ONION)
-                .ingredients(IngredientsType.SALAD)
+                .ingredient(Ingredient.CHEESE)
+                .sauce(Sauce.THOUSAND_ISLAND)
+                .ingredient(Ingredient.ONION)
+                .ingredient(Ingredient.SALAD)
                 .build();
         System.out.println(bigMac);
 
         //When
-        int ingredientsCount = bigMac.getIngredients().size();
+        int ingredientsCount = bigMac.getIngredientSize();
 
         //Then
         Assert.assertEquals(3, ingredientsCount);
-        Assert.assertEquals(BunType.SESAME_BUN, bigMac.getBun());
-        Assert.assertEquals(SauceType.THOUSAND_ISLAND, bigMac.getSauce());
+        Assert.assertEquals(Bun.SESAME_BUN, bigMac.getBun());
+        Assert.assertEquals(Sauce.THOUSAND_ISLAND, bigMac.getSauce());
     }
 
     @Test
@@ -46,12 +46,12 @@ public class BigMacTestSuite {
         //Given
         try {
             BigMac bigMac = new BigMac.BigMacBuilder()
-                    .bun(BunType.SESAME_BUN)
+                    .bun(Bun.SESAME_BUN)
                     .burgers(10)
-                    .ingredients(IngredientsType.CHEESE)
-                    .sauce(SauceType.THOUSAND_ISLAND)
-                    .ingredients(IngredientsType.ONION)
-                    .ingredients(IngredientsType.SALAD)
+                    .ingredient(Ingredient.CHEESE)
+                    .sauce(Sauce.THOUSAND_ISLAND)
+                    .ingredient(Ingredient.ONION)
+                    .ingredient(Ingredient.SALAD)
                     .build();
         } catch (IllegalStateException ex) {
             System.out.println(ex.getMessage());
@@ -66,12 +66,12 @@ public class BigMacTestSuite {
         //Given
         try {
             BigMac bigMac = new BigMac.BigMacBuilder()
-                    .bun(BunType.SESAME_BUN)
+                    .bun(Bun.SESAME_BUN)
                     .burgers(0)
-                    .ingredients(IngredientsType.CHEESE)
-                    .sauce(SauceType.THOUSAND_ISLAND)
-                    .ingredients(IngredientsType.ONION)
-                    .ingredients(IngredientsType.SALAD)
+                    .ingredient(Ingredient.CHEESE)
+                    .sauce(Sauce.THOUSAND_ISLAND)
+                    .ingredient(Ingredient.ONION)
+                    .ingredient(Ingredient.SALAD)
                     .build();
         } catch (IllegalStateException ex) {
             System.out.println(ex.getMessage());
@@ -86,9 +86,9 @@ public class BigMacTestSuite {
         //Given
         try {
             BigMac bigMac = new BigMac.BigMacBuilder()
-                    .bun(BunType.SESAME_BUN)
+                    .bun(Bun.SESAME_BUN)
                     .burgers(2)
-                    .sauce(SauceType.THOUSAND_ISLAND)
+                    .sauce(Sauce.THOUSAND_ISLAND)
                     .build();
         } catch (IllegalStateException ex) {
             System.out.println(ex.getMessage());

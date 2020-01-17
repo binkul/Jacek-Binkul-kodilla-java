@@ -1,20 +1,20 @@
 package com.kodilla.patterns.builder.bigmac;
 
-import com.kodilla.patterns.builder.bigmac.type.BunType;
-import com.kodilla.patterns.builder.bigmac.type.IngredientsType;
-import com.kodilla.patterns.builder.bigmac.type.SauceType;
+import com.kodilla.patterns.builder.bigmac.type.Bun;
+import com.kodilla.patterns.builder.bigmac.type.Ingredient;
+import com.kodilla.patterns.builder.bigmac.type.Sauce;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class BigMac {
-    private final BunType bun;
+    private final Bun bun;
     private final int burgers;
-    private final SauceType sauce;
-    private final List<IngredientsType> ingredients;
+    private final Sauce sauce;
+    private final List<Ingredient> ingredients;
 
-    private BigMac(BunType bun, int burgers, SauceType sauce, List<IngredientsType> ingredients) {
+    private BigMac(Bun bun, int burgers, Sauce sauce, List<Ingredient> ingredients) {
         this.bun = bun;
         this.burgers = burgers;
         this.sauce = sauce;
@@ -22,12 +22,12 @@ public class BigMac {
     }
 
     public static class BigMacBuilder {
-        private BunType bun = BunType.NORMAL_BUN;
+        private Bun bun = Bun.NORMAL_BUN;
         private int burgers;
-        private SauceType sauce = SauceType.BARBECUE;
-        private List<IngredientsType> ingredients = new ArrayList<>();
+        private Sauce sauce = Sauce.BARBECUE;
+        private List<Ingredient> ingredients = new ArrayList<>();
 
-        public BigMacBuilder bun(BunType bun) {
+        public BigMacBuilder bun(Bun bun) {
             this.bun = bun;
             return this;
         }
@@ -37,12 +37,12 @@ public class BigMac {
             return this;
         }
 
-        public BigMacBuilder sauce(SauceType sauce) {
+        public BigMacBuilder sauce(Sauce sauce) {
             this.sauce = sauce;
             return this;
         }
 
-        public BigMacBuilder ingredients(IngredientsType ingredient) {
+        public BigMacBuilder ingredient(Ingredient ingredient) {
             ingredients.add(ingredient);
             return this;
         }
@@ -62,7 +62,7 @@ public class BigMac {
         }
     }
 
-    public BunType getBun() {
+    public Bun getBun() {
         return bun;
     }
 
@@ -70,12 +70,12 @@ public class BigMac {
         return burgers;
     }
 
-    public SauceType getSauce() {
+    public Sauce getSauce() {
         return sauce;
     }
 
-    public List<IngredientsType> getIngredients() {
-        return ingredients;
+    public int getIngredientSize() {
+        return ingredients.size();
     }
 
     @Override
@@ -85,7 +85,7 @@ public class BigMac {
                 ", sauce: " + sauce.getName() +
                 ", ingredients: " +
                 ingredients.stream()
-                        .map(IngredientsType::getName)
+                        .map(Ingredient::getName)
                         .collect(Collectors.joining(", "));
     }
 }
