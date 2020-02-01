@@ -5,7 +5,7 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "TASKLIST")
+@Table(name = "tasklists")
 public class TaskList {
     private int id;
     private String ListName;
@@ -19,20 +19,16 @@ public class TaskList {
     }
 
     @Id
-    @GeneratedValue
-    @NotNull
-    @Column(name = "ID", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
 
-    @Column(name = "LISTNAME")
     @NotNull
     public String getListName() {
         return ListName;
     }
 
-    @Column(name = "DESCRIPTION")
     public String getDescription() {
         return Description;
     }
