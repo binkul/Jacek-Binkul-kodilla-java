@@ -1,55 +1,51 @@
 package com.kodilla.hibernate.invoice;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "INVOICES")
+@Table(name = "invoices")
 public class Invoice {
-    private int Id;
+    private int id;
     private String number;
     private List<Item> items = new ArrayList<>();
 
-    public Invoice() {}
+    public Invoice() {
+    }
 
     public Invoice(String number) {
         this.number = number;
     }
 
     @Id
-    @GeneratedValue
-    @NotNull
-    @Column(name = "ID", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
-        return Id;
+        return id;
     }
 
     @NotNull
-    @Column(name = "NUMBER")
     public String getNumber() {
         return number;
     }
 
-    @OneToMany(targetEntity = Item.class,
-            mappedBy = "invoice",
+    @OneToMany(mappedBy = "invoice",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
     public List<Item> getItems() {
         return items;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    private void setId(int id) {
+        this.id = id;
     }
 
-    public void setNumber(String number) {
+    private void setNumber(String number) {
         this.number = number;
     }
 
-    public void setItems(List<Item> items) {
+    private void setItems(List<Item> items) {
         this.items = items;
     }
 }

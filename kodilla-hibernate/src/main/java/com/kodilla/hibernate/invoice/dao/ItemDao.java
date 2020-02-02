@@ -1,6 +1,7 @@
 package com.kodilla.hibernate.invoice.dao;
 
 import com.kodilla.hibernate.invoice.Item;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +11,7 @@ import java.util.List;
 @Transactional
 @Repository
 public interface ItemDao extends CrudRepository<Item, Integer> {
-    List<Item> findByProduct_Id(Integer id);
+
+    @Query(nativeQuery = true)
+    List<Item> retrieveCountOfAll();
 }
