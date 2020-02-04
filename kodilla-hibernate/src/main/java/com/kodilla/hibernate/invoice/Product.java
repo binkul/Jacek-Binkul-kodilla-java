@@ -7,52 +7,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "PRODUCTS")
+@Table(name = "products")
 public class Product {
     private int id;
-    private String Name;
-    private List<Item> items = new ArrayList<>();
+    private String name;
 
-    public Product() {}
-
+    public Product() {
+    }
     public Product(String name) {
-        Name = name;
+        this.name = name;
     }
 
     @Id
-    @GeneratedValue
-    @NotNull
-    @Column(name = "ID", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
 
-    @Column(name = "NAME")
+    @NotNull
     public String getName() {
-        return Name;
+        return name;
     }
 
-    @OneToMany(targetEntity = Item.class,
-            mappedBy = "product",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
-    public List<Item> getItems() {
-        return items;
+    private void setName(String name) {
+        this.name = name;
     }
 
     private void setId(int id) {
         this.id = id;
-    }
-
-    private void setName(String name) {
-        Name = name;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
-    public void addItem(Item item) {
-        items.add(item);
     }
 }

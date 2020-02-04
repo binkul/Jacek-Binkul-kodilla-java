@@ -29,7 +29,6 @@ public class TaskList {
     }
 
     @Column(name = "LISTNAME")
-
     @NotNull
     public String getListName() {
         return ListName;
@@ -63,5 +62,4 @@ public class TaskList {
     private void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
-
 }

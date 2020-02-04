@@ -28,78 +28,42 @@ public class InvoiceDaoTestSuite {
     public void testInvoiceDaoSave() {
 
         //Given
+        String number = "HK/B/01.02.2020";
+        Invoice invoice = new Invoice(number);
+
         Product product1 = new Product("Socks");
-        Product product2 = new Product("Sweater");
-        Product product3 = new Product("Pants");
-        Product product4 = new Product("Gloves");
+        Product product2 = new Product("Pants");
+        Product product3 = new Product("Shirt");
 
-        Item item1 = new Item(new BigDecimal("120"), 2);
-        Item item2 = new Item(new BigDecimal("10"), 4);
-        Item item3 = new Item(new BigDecimal("15"), 7);
-        Item item4 = new Item(new BigDecimal("120"), 8);
-        Item item5 = new Item(new BigDecimal("2"), 9);
-        Item item6 = new Item(new BigDecimal("23"), 10);
-        Item item7 = new Item(new BigDecimal("11"), 11);
-        Item item8 = new Item(new BigDecimal("47"), 12);
+        Item item1 = new Item(invoice, product1, new BigDecimal(2.5), 25);
+        Item item2 = new Item(invoice, product2, new BigDecimal(13.5), 40);
+        Item item3 = new Item(invoice, product3, new BigDecimal(3.5), 25);
 
-        String invoiceNr = "HK/B/30.01.2020";
-        Invoice invoice = new Invoice(invoiceNr);
+        invoice.getItems().add(item1);
+        invoice.getItems().add(item2);
+        invoice.getItems().add(item3);
 
-        item1.setInvoice(invoice);
-        item2.setInvoice(invoice);
-        item3.setInvoice(invoice);
-        item4.setInvoice(invoice);
-        item5.setInvoice(invoice);
-        item6.setInvoice(invoice);
-        item7.setInvoice(invoice);
-        item8.setInvoice(invoice);
-
-        item1.setProduct(product1);
-        item2.setProduct(product1);
-        item3.setProduct(product2);
-        item4.setProduct(product2);
-        item5.setProduct(product3);
-        item6.setProduct(product4);
-        item7.setProduct(product4);
-        item8.setProduct(product4);
-
-        product1.setItems(Arrays.asList(item1, item2));
-        product2.setItems(Arrays.asList(item3, item4));
-        product3.addItem(item5);
-        product4.setItems(Arrays.asList(item6, item7, item8));
-
-        invoice.setItems(Arrays.asList(item1, item2, item3, item4, item5, item6, item7, item8));
-
-        //When
+        //when
         invoiceDao.save(invoice);
         int id = invoice.getId();
-        int idProduct = product4.getId();
+        int idProduct1 = product1.getId();
+        int numberOfItems = invoice.getItems().size();
+        List<Item> readItems = itemDao.retrieveCountOfAll();
+        Invoice invoiceRead = invoiceDao.findById(id);
+        Product readProduct = productDao.findById(idProduct1);
 
-        Invoice readInvoice = invoiceDao.findByNumber(invoiceNr);
-        long productCount = productDao.count();
-        long itemCount = itemDao.count();
-        long invoiceCount = invoiceDao.count();
-        List<Item> items = itemDao.findByProduct_Id(idProduct);
-
-        //Then
+        //then
         Assert.assertNotEquals(0, id);
-        Assert.assertEquals(invoiceNr, readInvoice.getNumber());
-        Assert.assertEquals(1, invoiceCount);
-        Assert.assertEquals(4, productCount);
-        Assert.assertEquals(8, itemCount);
-        Assert.assertEquals(3, items.size());
+        Assert.assertNotEquals(0, idProduct1);
+        Assert.assertEquals(product1.getName(), readProduct.getName());
+        Assert.assertEquals(3, numberOfItems);
+        Assert.assertEquals(3, readItems.size());
+        Assert.assertEquals(id, invoiceRead.getId());
+        Assert.assertEquals(number, invoiceRead.getNumber());
 
         //CleanUp
-        try {
-            invoiceDao.deleteAll();
-            productDao.deleteAll();
-            itemDao.deleteAll();
-        } catch (Exception ex) {
-
-        }
-
-
-
+        invoiceDao.deleteAll();
+        productDao.deleteAll();
     }
 
 }

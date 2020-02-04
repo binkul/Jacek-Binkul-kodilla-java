@@ -1,6 +1,5 @@
 package com.kodilla.hibernate;
 
-
 import com.kodilla.hibernate.task.TaskFinancialDetails;
 import com.kodilla.hibernate.tasklist.TaskList;
 

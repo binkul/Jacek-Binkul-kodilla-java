@@ -1,7 +1,6 @@
 package com.kodilla.hibernate.task.dao;
 
 import com.kodilla.hibernate.Task;
-
 import com.kodilla.hibernate.task.TaskFinancialDetails;
 import org.junit.Assert;
 import org.junit.Test;
