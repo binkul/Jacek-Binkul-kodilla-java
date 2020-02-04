@@ -1,5 +1,6 @@
 package com.kodilla.hibernate.tasklist.dao;
 
+
 import com.kodilla.hibernate.Task;
 import com.kodilla.hibernate.task.TaskFinancialDetails;
 import com.kodilla.hibernate.task.dao.TaskDao;
@@ -19,29 +20,29 @@ import java.util.List;
 public class TaskListDaoTestSuite {
     @Autowired
     private TaskListDao taskListDao;
-    @Autowired
-    private TaskDao taskDao;
     private static final String DESCRIPTION = "What is to do in the next week";
-    private static final String LIST_NAME = "To do.";
+    private static final String LIST_NAME_ONE = "To do.";
+    private static final String LIST_NAME_TWO = "Not to do.";
 
     @Test
     public void testFindByListName() {
         //Given
-        TaskList taskList = new TaskList(LIST_NAME, DESCRIPTION);
+        TaskList taskList1 = new TaskList(LIST_NAME_ONE, DESCRIPTION);
+        TaskList taskList2 = new TaskList(LIST_NAME_TWO, DESCRIPTION);
 
         //When
-        taskListDao.save(taskList);
+        taskListDao.save(taskList1);
+        taskListDao.save(taskList2);
 
         //Then
-        int id = taskList.getId();
-        String name = taskList.getListName();
+        String name = taskList1.getListName();
         List<TaskList> readName = taskListDao.findByListName(name);
         Assert.assertNotNull(readName);
         Assert.assertEquals(1, readName.size());
-        Assert.assertEquals(LIST_NAME, readName.get(0).getListName());
+        Assert.assertEquals(LIST_NAME_ONE, readName.get(0).getListName());
 
         //Cleanup
-        taskListDao.deleteById(id);
+        taskListDao.deleteAll();
     }
 
     @Test

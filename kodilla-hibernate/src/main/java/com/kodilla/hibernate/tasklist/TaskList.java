@@ -23,14 +23,13 @@ public class TaskList {
     }
 
     @Id
-    @GeneratedValue
-    @NotNull
-    @Column(name = "ID", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
 
     @Column(name = "LISTNAME")
+
     @NotNull
     public String getListName() {
         return ListName;
@@ -64,4 +63,5 @@ public class TaskList {
     private void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
+
 }
