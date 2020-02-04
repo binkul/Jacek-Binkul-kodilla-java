@@ -11,15 +11,15 @@ import java.util.List;
 @Table(name = "TASKLIST")
 public class TaskList {
     private int id;
-    private String ListName;
-    private String Description;
+    private String listName;
+    private String description;
     List<Task> tasks = new ArrayList<>();
 
     public TaskList() {}
 
     public TaskList(String listName, String description) {
-        ListName = listName;
-        Description = description;
+        this.listName = listName;
+        this.description = description;
     }
 
     @Id
@@ -28,15 +28,13 @@ public class TaskList {
         return id;
     }
 
-    @Column(name = "LISTNAME")
     @NotNull
     public String getListName() {
-        return ListName;
+        return listName;
     }
 
-    @Column(name = "DESCRIPTION")
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     @OneToMany(targetEntity = Task.class,
@@ -52,11 +50,11 @@ public class TaskList {
     }
 
     private void setListName(String listName) {
-        ListName = listName;
+        this.listName = listName;
     }
 
     private void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     private void setTasks(List<Task> tasks) {
