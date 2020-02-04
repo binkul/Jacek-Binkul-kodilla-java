@@ -30,6 +30,7 @@ public class Invoice {
         return number;
     }
 
+
     @OneToMany(mappedBy = "invoice",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)

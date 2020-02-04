@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 @Table(name = "items")
 public class Item {
     private int id;
+
     private BigDecimal price;
     private int quantity;
     private BigDecimal value;
@@ -69,6 +70,7 @@ public class Item {
     }
 
     private void setProduct(Product product) {
+
         this.product = product;
     }
 
