@@ -12,7 +12,7 @@ public class SudokuBoard {
     private List<SudokuRow> rows;
 
     public SudokuBoard() {
-        this.printBoard = new PrintUtf(this);
+        this.printBoard = new PrintFrameBoard(this);
         rows = createRows();
     }
 

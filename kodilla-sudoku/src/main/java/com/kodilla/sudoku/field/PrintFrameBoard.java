@@ -4,12 +4,12 @@ import com.kodilla.sudoku.constant.ConsoleColors;
 import com.kodilla.sudoku.constant.Data;
 import com.kodilla.sudoku.constant.UtfData;
 
-public class PrintUtf implements Printable{
+public class PrintFrameBoard implements Printable{
     private static final String FRAME_COLOR = ConsoleColors.RESET.getCode();
     private static final String NORMAL_COLOR = ConsoleColors.RESET.getCode();
     private final SudokuBoard sudokuBoard;
 
-    public PrintUtf(SudokuBoard sudokuBoard) {
+    public PrintFrameBoard(SudokuBoard sudokuBoard) {
         this.sudokuBoard = sudokuBoard;
     }
 

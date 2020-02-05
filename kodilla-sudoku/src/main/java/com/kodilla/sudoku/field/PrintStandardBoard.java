@@ -3,11 +3,11 @@ package com.kodilla.sudoku.field;
 import com.kodilla.sudoku.constant.ConsoleColors;
 import com.kodilla.sudoku.constant.Data;
 
-public class PrintNormal implements Printable {
+public class PrintStandardBoard implements Printable {
     private static final String NORMAL_COLOR = ConsoleColors.RESET.getCode();
     private final SudokuBoard sudokuBoard;
 
-    public PrintNormal(SudokuBoard sudokuBoard) {
+    public PrintStandardBoard(SudokuBoard sudokuBoard) {
         this.sudokuBoard = sudokuBoard;
     }
 
