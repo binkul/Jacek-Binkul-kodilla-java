@@ -11,6 +11,10 @@ import java.util.List;
                 "WHERE LEFT(company_name, 3) LIKE :SHORTCUT",
         resultClass = Company.class
 )
+@NamedQuery(
+        name = "Company.retrieveCompanyByShortcut",
+        query = "FROM Company WHERE name LIKE :SHORTCUT"
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
