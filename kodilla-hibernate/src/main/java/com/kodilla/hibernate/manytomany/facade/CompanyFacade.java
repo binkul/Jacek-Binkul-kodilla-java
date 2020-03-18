@@ -26,12 +26,12 @@ public class CompanyFacade {
     }
 
     public List<Company> findCompanies(String shortcut) throws EntityNotFoundException {
-        return companyDao.retrieveCompanyByShortcut("%" + shortcut + "%")
+        return companyDao.retrieveCompanyByShortcut(shortcut)
                 .orElseThrow(() -> new EntityNotFoundException(EntityNotFoundException.NOT_FOUND_COMPANY));
     }
 
     public List<Employee> findEmployees(String shortcut) throws EntityNotFoundException {
-        return employeeDao.retrieveEmployeeByShortcut("%" + shortcut + "%")
+        return employeeDao.retrieveEmployeeByShortcut(shortcut)
                 .orElseThrow(() -> new EntityNotFoundException(EntityNotFoundException.NOT_FOUND_EMPLOYEE));
     }
 }

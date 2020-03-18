@@ -12,7 +12,7 @@ import java.util.List;
 )
 @NamedNativeQuery(
         name = "Employee.retrieveEmployeeByShortcut",
-        query = "SELECT * FROM employess WHERE lastname like :SHORTCUT",
+        query = "SELECT * FROM employess WHERE lastname like CONCAT('%', :SHORTCUT, '%')",
         resultClass = Employee.class
 )
 @Entity

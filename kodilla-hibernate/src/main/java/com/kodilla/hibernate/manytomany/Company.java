@@ -13,7 +13,7 @@ import java.util.List;
 )
 @NamedQuery(
         name = "Company.retrieveCompanyByShortcut",
-        query = "FROM Company WHERE name LIKE :SHORTCUT"
+        query = "FROM Company WHERE name LIKE CONCAT('%', :SHORTCUT, '%')"
 )
 @Entity
 @Table(name = "COMPANIES")
