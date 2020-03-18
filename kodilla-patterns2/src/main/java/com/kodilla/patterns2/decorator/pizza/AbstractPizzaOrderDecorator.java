@@ -4,11 +4,9 @@ import java.math.BigDecimal;
 
 public class AbstractPizzaOrderDecorator implements PizzaOrder {
     private final PizzaOrder pizzaOrder;
-    private final Ingredient ingredient;
 
-    protected AbstractPizzaOrderDecorator(PizzaOrder pizzaOrder, Ingredient ingredient) {
+    protected AbstractPizzaOrderDecorator(PizzaOrder pizzaOrder) {
         this.pizzaOrder = pizzaOrder;
-        this.ingredient = ingredient;
     }
 
     @Override
@@ -19,13 +17,5 @@ public class AbstractPizzaOrderDecorator implements PizzaOrder {
     @Override
     public String getDescription() {
         return pizzaOrder.getDescription();
-    }
-
-    public int getIngredientPrice() {
-        return ingredient.getPrice();
-    }
-
-    public String getIngredientName() {
-        return ingredient.getName();
     }
 }
