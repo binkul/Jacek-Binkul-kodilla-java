@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.time.LocalDate;
 
 public class FacebookTestingApp {
-    private static final int birthYear = 1970;
+    private static final int BIRTH_YEAR = 1970;
     private static final String XPATH_DAY_SELECT = "//div[contains(@class, \"58mq\")]/div[2]/span/span/select[1]";
     private static final String XPATH_MONTH_SELECT = "//div[contains(@class, \"58mq\")]/div[2]/span/span/select[2]";
     private static final String XPATH_YEAR_SELECT = "//div[contains(@class, \"58mq\")]/div[2]/span/span/select[3]";
@@ -20,7 +20,7 @@ public class FacebookTestingApp {
     public static void main(String[] args) {
         LocalDate date = LocalDate.now();
         int presentYear = date.getYear();
-        int yearPos = presentYear - birthYear + 1;
+        int yearPos = presentYear - BIRTH_YEAR + 1;
 
         WebDriver webDriver = WebDriverConfig.getDriver(WebDriverConfig.CHROME);
         webDriver.get("https://www.facebook.com");
